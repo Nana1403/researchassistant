@@ -40,14 +40,3 @@ main_agent = Agent(
              ],
 )
 
-# fact_checking = Agent(
-#      name="Fact Checking Agent",
-#     instructions="",
-#     tools=" "
-# )
-
-# save_note_agent = Agent(
-#     name="",
-#     instructions="", 
-#     tools=" "
-# )
