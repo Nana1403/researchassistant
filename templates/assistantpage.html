@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>  
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+</head>
+<html> 
+<body class="assistant_page">
+
+  <div class="main_container">
+
+        <div class="assistant_container">
+            {%for msg in messages%}
+            {% if msg.sender == "user" %}
+                <div class="user">
+                    <p> {{ msg.text }} </p>
+                </div>
+            {%else%}
+                <div class="ai">
+                   <p> {{ msg.text | safe }} </p>
+                </div>
+            {% endif %}
+            {% endfor %}
+        
+
+            <form action="/assistant" method="POST">
+                <div class="input_and_button_container"> 
+                        <input type="text" placeholder="Type Here...." name="question">
+                        <button  id="assistant-btn" name="assistant" value="research" type="submit"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="45px" fill="#e3e3e3"><path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z"/></svg></button>
+                </div> 
+            </form>
+        </div>
+
+      
+       <div class="notes_container">
+            <form id="note-form" method="POST" action="/save-pdf">
+                <h3>Notes</h3>
+
+                <div class="toolbar">
+                       <button class="toolbar-button" type="button" onclick="document.execCommand('bold')">Bold</button>
+
+                       <button class="toolbar-button" type="button" onclick="document.execCommand('italic')">Italic</button>
+
+                       <button class="toolbar-button" type="button" onclick="document.execCommand('underline')">
+                        Underline
+                       </button>
+
+                       <button class="toolbar-button" type="button" onclick="document.execCommand('strikeThrough')">
+                          Strike
+                       </button>
+
+                       <button class="toolbar-button" type="button" onclick="document.execCommand('insertUnorderedList')">
+                          Bullet List
+                       </button>
+
+                        <button class="toolbar-button" type="button" onclick="document.execCommand('insertOrderedList')">
+                        Numbered List
+                        </button>
+
+                        <button class="toolbar-button" type="button" onclick="document.execCommand('justifyLeft')">
+                            Left
+                        </button>
+                        
+                        <button class="toolbar-button" type="button" onclick="document.execCommand('justifyCenter')">
+                            Center
+                        </button>
+                        
+                        <button class="toolbar-button" type="button" onclick="document.execCommand('justifyRight')">
+                            Right
+                        </button>
+                        
+                        <button class="toolbar-button" type="button" onclick="document.execCommand('undo')">
+                            Undo
+                        </button>
+                        
+                        <button class="toolbar-button" type="button" onclick="document.execCommand('redo')">
+                            Redo
+                        </button>
+                        
+                        <button class="toolbar-button" type="button" onclick="document.execCommand('removeFormat')">
+                            Clear
+                        </button>
+
+                        <select onchange="document.execCommand('formatBlock', false, this.value)">
+                            <option value="p">Paragraph</option>
+                            <option value="h1">Heading 1</option>
+                            <option value="h2">Heading 2</option>
+                            <option value="h3">Heading 3</option>
+                        </select>
+                
+                        <select onchange="document.execCommand('fontSize', false, this.value)">
+                           <option value="3">Normal</option>
+                           <option value="4">Large</option>
+                           <option value="5">Huge</option>
+                        </select>
+
+                 </div>
+
+                <div id="editor" contenteditable="true" >
+                    start here....
+                </div>
+
+                <textarea id="content" name="content" rows="8" cols="50" hidden></textarea>
+
+                <button id="pdf_button" type="submit">Save as PDF</button>
+            </form>
+              
+              <script>
+                document.getElementById("note-form").addEventListener("submit", function () {
+                  document.getElementById("content").value =
+                    document.getElementById("editor").innerHTML;
+                });
+              </script>
+   
+       </div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>  
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+</head>
+<html>
+<body>
+
+<div class="nav-bar">
+    <div class="nav">
+
+        <h1> Research Assistant</h1>
+    </div>
+</div>
+
+
+<h2>Research That Drives <br> Knowledge Forward.</h2>
+
+<p>Access reliable information, explore in-depth studies, and engage <br> with content designed to inform, question, and inspire critical thinking.</p>
+
+<form action="/assistant" method="POST"> 
+       <button id="homepage-btn" type="submit" name="action" value="assi_page">Try Our Assistant</button>
+</form>
+
+<img src="{{url_for('static', filename='/images/img3.png')}}" alt="A image of students.">
+
+</body>
+</html>
