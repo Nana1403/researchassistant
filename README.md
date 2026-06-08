@@ -1,6 +1,6 @@
-🔎 Research Assistant
+## 🔎 Research Assistant
 
-📌 Overview
+## 📌 Overview
 
 Research Assistant is an AI-powered web application that helps users explore and learn about any topic through natural conversations. Users can ask questions, receive AI-generated responses, and organize their findings using the built-in note-taking editor.
 
@@ -39,7 +39,7 @@ Whether you're researching for school, work, or personal projects, Research Assi
 
 ## 📸 Demo
 
-<img src="images/demo.gif" width="600"/>
+<img src="static/images/demo.gif" width="600"/>
 
 <p><em> Live Demo</em></p>
 
